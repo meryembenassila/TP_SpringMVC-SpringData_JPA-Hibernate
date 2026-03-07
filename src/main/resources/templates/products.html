@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Dans products.html, ligne 4 -->
+<!-- Alternative : forcer la chaîne littérale avec des guillemets simples -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout1"
+><!--indique que cette page va utimse layout layout1.html -->
+
+<head>
+    <title>Title</title>
+
+</head>
+<body>
+<div class="p-3" layout:fragment="content"> <!--voici le fragement qui sera inséré il ale meme nom que layout1.html-->
+    <div class="p-3">
+        <a class="btn btn-primary" th:href="@{/newproduct}">New Product</a>
+
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="p :${productsList}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/delete(id=${p.id})}" onclick="return confirm('Etes vous sure ? ')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
