@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Dans products.html, ligne 4 -->
+<!-- Alternative : forcer la chaîne littérale avec des guillemets simples -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+><!--indique que cette page va utimse layout layout1.html -->
+
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="p-3" > <!--voici le fragement qui sera inséré il ale meme nom que layout1.html-->
+ <div class="row">
+     <div class="col col-md-6 offset-3">
+         <div class="card">
+             <div class="card-header">
+                 Authentification
+             </div>
+             <div class="card-body">
+                 <form method="post" th:action="@{/login}">
+                     <div class="mb-3">
+                         <label class="form-label">UserName</label>
+                         <input type="text" name="username" class="form-control">
+                     </div>
+                     <div class="mb-3">
+                         <label class="form-label">Password</label>
+                         <input type="text" name="password" class="form-control">
+                     </div>
+                     <button class="btn btn-primary">Login</button>
+                 </form>
+
+             </div>
+         </div>
+
+     </div>
+
+ </div>
+</div>
+
+
+</body>
+</html>

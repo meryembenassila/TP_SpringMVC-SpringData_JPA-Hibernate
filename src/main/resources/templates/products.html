@@ -5,6 +5,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout1"
+      xmlns:sec="http:///www.thymeleaf.org/extras/spring-security"
 ><!--indique que cette page va utimse layout layout1.html -->
 
 <head>
@@ -14,8 +15,7 @@
 <body>
 <div class="p-3" layout:fragment="content"> <!--voici le fragement qui sera inséré il ale meme nom que layout1.html-->
     <div class="p-3">
-        <a class="btn btn-primary" th:href="@{/newproduct}">New Product</a>
-
+        <a class="btn btn-primary" sec:authorize = "hasRole('ADMIN')" th:href="@{/admin/newproduct}">New Product</a>
     </div>
     <table class="table">
         <thead>
@@ -33,8 +33,10 @@
             <td th:text="${p.name}"></td>
             <td th:text="${p.price}"></td>
             <td th:text="${p.quantity}"></td>
-            <td>
-                <a class="btn btn-danger" th:href="@{/delete(id=${p.id})}" onclick="return confirm('Etes vous sure ? ')">Delete</a>
+            <td sec:authorize = "hasRole('ADMIN')"><!--lebouton s'affiche uniq pour admin-->
+                <form method="post" th:action="@{/admin/delete(id=${p.id})}">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Etes vous sure ? ')"> Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>

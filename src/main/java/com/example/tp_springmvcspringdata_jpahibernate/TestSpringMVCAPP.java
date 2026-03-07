@@ -3,14 +3,14 @@ import com.example.tp_springmvcspringdata_jpahibernate.entities.Product;
 import com.example.tp_springmvcspringdata_jpahibernate.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+
+// spring utilse la confugiration par défaut = toute les ressouces nécessite une authentification par défaut
+//@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@SpringBootApplication
 public class TestSpringMVCAPP {
     public static void main(String[] args) {
         SpringApplication.run(TestSpringMVCAPP.class,args); }
