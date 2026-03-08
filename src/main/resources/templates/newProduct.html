@@ -11,6 +11,7 @@
 <body>
 <div class="p-3" layout:fragment="content"> <!--voici le fragement qui sera inséré il ale meme nom que layout1.html-->
    <form method="post" th:action="@{/admin/saveProduct}">
+
        <div class="mb-3">
            <label class="form-label">Name</label>
            <input class="form-control" type="text" name="name" th:value="${product.name}">

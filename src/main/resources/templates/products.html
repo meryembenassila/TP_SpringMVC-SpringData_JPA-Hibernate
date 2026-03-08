@@ -38,6 +38,11 @@
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Etes vous sure ? ')"> Delete</button>
                 </form>
             </td>
+            <td sec:authorize = "hasRole('ADMIN')"><!--lebouton s'affiche uniq pour admin-->
+                <form method="post" th:action="@{/admin/edit(id=${p.id})}">
+                    <button type="submit" class="btn btn-primary"> Edit</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

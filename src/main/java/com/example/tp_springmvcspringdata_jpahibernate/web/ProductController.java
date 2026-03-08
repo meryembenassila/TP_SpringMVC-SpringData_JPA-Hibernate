@@ -41,6 +41,15 @@ public class ProductController {
         productRepository.deleteById(id);
         return "redirect:/user/index";//redirection
 }
+
+    @PostMapping("/admin/edit")
+    public String edit(@RequestParam(name = "id") Long id, Model model){
+        Product product = productRepository.getReferenceById(id);
+        model.addAttribute("product",product);
+        return "editProduct";
+    }
+
+
     @GetMapping("/admin/newproduct")
     public String newproduct(Model model){
        model.addAttribute("product",new Product());
@@ -50,11 +59,10 @@ public class ProductController {
 
     @PostMapping("/admin/saveProduct")
     public String saveProduct(@Valid Product product , BindingResult bindingResult ){
+        System.out.println(product);
         // @Valid sert à activer la validation des champs d’un objet sinon il ne va pas les vérifier
         // BindingResult récupère les erreurs.
-        if (bindingResult.hasErrors()){
-            return  "newProduct";
-        }
+        if (bindingResult.hasErrors()){ return  "newProduct";}
         productRepository.save(product);
         return  "redirect:/user/index";
 
