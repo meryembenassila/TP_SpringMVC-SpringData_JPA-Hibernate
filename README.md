@@ -67,6 +67,7 @@ La première étape consiste à créer un projet **Spring Boot** en utilisant l'
 ### Configuration de l'application
 
 Le fichier `application.properties` permet de configurer la connexion à la base de données et les paramètres JPA/Hibernate :
+
 ![Creation du projet](screenshots/Configuration.png)
 
 
@@ -75,8 +76,6 @@ Le fichier `application.properties` permet de configurer la connexion à la base
 ## Question 2 : Création de l'entité Product
 
 Dans cette étape, nous avons créé une entité JPA appelée **Product** qui représente un produit dans la base de données.
-
-Cette entité contient les attributs suivants :
 
 ![Creation du projet](screenshots/Entité.png)
 
