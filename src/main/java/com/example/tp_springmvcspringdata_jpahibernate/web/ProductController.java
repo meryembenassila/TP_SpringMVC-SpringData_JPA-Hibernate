@@ -27,28 +27,23 @@ public class ProductController {
         List<Product> products =  productRepository.findAll();
         model.addAttribute("productsList",products);
         return  "products";
-
     }
-
 
     @GetMapping("/user/")
     public String Home(){
         return  "redirect:/user/index";
-
     }
     @PostMapping("/admin/delete")
     public String delete(@RequestParam(name = "id") Long id){//il va chercher dans l'url un parametre id requete para c'est si ce id a un autre nom
         productRepository.deleteById(id);
         return "redirect:/user/index";//redirection
 }
-
     @PostMapping("/admin/edit")
     public String edit(@RequestParam(name = "id") Long id, Model model){
         Product product = productRepository.getReferenceById(id);
         model.addAttribute("product",product);
         return "editProduct";
     }
-
 
     @GetMapping("/admin/newproduct")
     public String newproduct(Model model){

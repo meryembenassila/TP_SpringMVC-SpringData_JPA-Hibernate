@@ -13,8 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-//@Configuration : indique à Spring que cette classe contient des beans de configuration.
-//@EnableWebSecurity : active la sécurité web de Spring Security.
 public class SecurityConfig {
 
     @Bean
@@ -30,9 +28,7 @@ public class SecurityConfig {
                 User.withUsername("user2").password(passwordEncoder().encode("1234")).roles("USER").build(),
                 User.withUsername("admin").password(passwordEncoder().encode("1234")).roles("USER","ADMIN").build()
                 // Ces rôles serviront pour gérer l’accès aux URL.
-        );
-    }
-
+                );}
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http
@@ -44,7 +40,5 @@ public class SecurityConfig {
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated()) //Toutes les autres URL nécessitent que l’utilisateur soit connecté (peu importe le rôle).
                 .exceptionHandling(eh->eh.accessDeniedPage("/notAuthorized"))
                 .build();
-
-
     }
 }
