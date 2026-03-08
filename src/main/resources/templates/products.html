@@ -14,9 +14,21 @@
 </head>
 <body>
 <div class="p-3" layout:fragment="content"> <!--voici le fragement qui sera inséré il ale meme nom que layout1.html-->
-    <div class="p-3">
-        <a class="btn btn-primary" sec:authorize = "hasRole('ADMIN')" th:href="@{/admin/newproduct}">New Product</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Bouton New Product (uniquement pour ADMIN) -->
+        <a class="btn btn-primary" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/newproduct}">New Product</a>
+
+        <!-- Formulaire de recherche -->
+        <form class="d-flex" th:action="@{/user/search}" method="get">
+            <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success me-2" type="submit">Search</button>
+            <a class="btn btn-outline-danger " th:href="@{/user/index}">Rénitialiser</a>
+
+        </form>
+
+
     </div>
+
     <table class="table">
         <thead>
         <tr>
@@ -24,6 +36,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th colspan="2">Actions</th>
         </tr>
 
         </thead>

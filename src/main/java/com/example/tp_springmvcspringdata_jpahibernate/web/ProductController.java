@@ -68,6 +68,28 @@ public class ProductController {
 
     }
 
+    @GetMapping("/user/search")
+    public String search(String keyword ,Model model){
+        System.out.println(keyword);
+        List<Product> products;
+
+        if(keyword != null && !keyword.isEmpty()){
+            products = productRepository.findByNameContainingIgnoreCase(keyword);
+        } else {
+            products = productRepository.findAll();
+        }
+
+        model.addAttribute("productsList", products);
+        return "products";
+    }
+
+    @GetMapping("/user/rénitialiser")
+    public String renitialiser(String keyword ){
+        return "redirect:/user/index";
+    }
+
+
+
     @GetMapping("/notAuthorized")
     public String notAuthorized(Model model){
         return  "notAuthorized";
